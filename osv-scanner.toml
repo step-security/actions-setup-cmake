@@ -1,0 +1,19 @@
+[[IgnoredVulns]]
+id = "GHSA-2mjp-6q6p-2qxm"
+reason = "undici: HTTP request smuggling via duplicate Content-Length requires user-controlled headers; this action makes fixed requests to trusted endpoints only."
+
+[[IgnoredVulns]]
+id = "GHSA-4992-7rv2-5pvq"
+reason = "undici: CRLF injection via the upgrade parameter requires user-controlled input; this action never passes user input to undici's upgrade option."
+
+[[IgnoredVulns]]
+id = "GHSA-g9mf-h72j-4rw9"
+reason = "undici: Decompression bomb requires a malicious server response; this action only fetches from GitHub API and official cmake release URLs."
+
+[[IgnoredVulns]]
+id = "GHSA-v9p9-hfj2-hcw8"
+reason = "undici: Affects WebSocket clients only (invalid server_max_window_bits); this action uses undici for plain HTTP requests, not WebSockets."
+
+[[IgnoredVulns]]
+id = "GHSA-vrm6-8vpv-qv8q"
+reason = "undici: Affects WebSocket permessage-deflate decompression only; this action uses undici for plain HTTP requests, not WebSockets."
