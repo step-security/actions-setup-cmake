@@ -1,0 +1,29 @@
+name: Latest Version Test
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  latest_version:
+    runs-on: ${{ matrix.os }}
+    name: Test latest version
+    strategy:
+      matrix:
+        os: ${{ github.actor == 'dependabot[bot]' && fromJSON('["ubuntu-latest"]') || fromJSON('["ubuntu-latest", "windows-latest", "macos-latest", "ubuntu-22.04-arm"]') }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Setup cmake
+      uses: ./
+      id: setup
+      with:
+        cmake-version: 'latest'
+
+    - name: Run cmake --version
+      shell: bash
+      run: |
+        VERSION=`cmake --version`
+        echo $VERSION
